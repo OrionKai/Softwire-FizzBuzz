@@ -1,46 +1,41 @@
 package com.example.fizzbuzz
 
-fun determineFizzBuzz(num: Int): String {
-    val msgsToPrint = mutableListOf<String>()
+fun fizzBuzz(num: Int): String {
+    val result = mutableListOf<String>()
 
     if (num % 3 == 0) {
-        msgsToPrint.add("Fizz")
+        result.add("Fizz")
     }
     if (num % 5 == 0) {
-        msgsToPrint.add("Buzz")
+        result.add("Buzz")
     }
     if (num % 7 == 0) {
-        msgsToPrint.add("Bang")
+        result.add("Bang")
     }
     if (num % 11 == 0) {
-        msgsToPrint.clear()
-        msgsToPrint.add("Bong")
+        result.clear()
+        result.add("Bong")
     }
     if (num % 13 == 0) {
-        var indexOfFirstB = msgsToPrint.indexOfFirst { it.startsWith("B") }
+        var indexOfFirstB = result.indexOfFirst { it.startsWith("B") }
         if (indexOfFirstB == -1) {
             indexOfFirstB = 0
         }
-        msgsToPrint.add(indexOfFirstB, "Fezz")
+        result.add(indexOfFirstB, "Fezz")
     }
     if (num % 17 == 0) {
-        msgsToPrint.reverse()
+        result.reverse()
     }
 
-    if (msgsToPrint.isEmpty()) {
-        msgsToPrint.add(num.toString())
+    if (result.isEmpty()) {
+        result.add(num.toString())
     }
 
-    return msgsToPrint.joinToString("")
-}
-
-fun fizzBuzz(max: Int) {
-    for (num in 1..max) {
-        val msgToPrint = determineFizzBuzz(num)
-        println(msgToPrint)
-    }
+    return result.joinToString("")
 }
 
 fun main() {
-    fizzBuzz(255)
+    for (num in 1..255) {
+        println(fizzBuzz(num))
+    }
 }
